@@ -26,7 +26,9 @@ void floyd2(int n, int** graph, int** shortest, int** path){
                     path[i][j] = k;
                     shortest[i][j] = shortest[i][k] + shortest[k][j];
                 }
+                
             }
+            
         }
     }
 }
@@ -41,12 +43,28 @@ void findPath(int q, int r){
 
 int main(void){
 
-    int example[6][6] = { {0, 0, 0, 0, 0, 0}
+
+    /**
+     * @brief 교재의 입력 데이터(Figure 3.2)
+     * 
+     */
+    /*int example[6][6] = { {0, 0, 0, 0, 0, 0}
     , {0, 0, 1, INF, 1, 5}
     , {0, 9, 0, 3, 2, INF}
     , {0, INF, INF, 0, 4, INF}
     , {0, INF, INF, 2, 0, 3}
-    , {0, 3, INF, INF, INF, 0}};
+    , {0, 3, INF, INF, INF, 0}};*/
+
+    /**
+     * @brief 임의로 자작한 입력 데이터
+     * 
+     */
+    int example[6][6] = { {0, 0, 0, 0, 0, 0}
+    , {0, 0, 3, 7, INF, 5}
+    , {0, 1, 0, 2, INF, INF}
+    , {0, INF, 9, 0, INF, 1}
+    , {0, INF, INF, 6, 0, 4}
+    , {0, 2, INF, INF, 8, 0}};
 
     int n = 5;
 
@@ -67,16 +85,20 @@ int main(void){
 
     floyd2(n, ex, shortest, path);
 
+    /**
+     * @brief 함수가 잘 작동하는지 확인하기 위한 출력 코드
+     * 
+     */
+    /*
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= n; j++){
             cout << shortest[i][j] << " ";
         }
         cout<<"\n";
     }
+    */
 
     findPath(5, 3);
     
-    
-        
     return 0;
 }
